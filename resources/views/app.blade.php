@@ -3,14 +3,13 @@
 <head>
     <title>The Sweet Life Clothing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="icon" type="image/png" href="../../public/images/lvd-logo.png"> -->
      <link rel="icon" type="image/png" href="{{ asset('images/lvd-logo.png') }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
     <!-- SweetAlert2 CSS -->

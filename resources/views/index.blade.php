@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2d9d5c123.js" crossorigin="anonymous"></script>
 
-    <style>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    {{-- <style>
         /* === Font & Icon === */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap');
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
@@ -294,7 +296,117 @@
             color: white;
             box-shadow: 0 0 12px rgba(255, 105, 180, 0.8);
         }
-    </style>
+
+        /* === Responsive CSS (Untuk Tampilan Mobile) === */
+        @media (max-width: 768px) {
+
+            /* Perbaikan umum untuk mobile */
+            .container, .form-container {
+                padding: 15px;
+                margin-top: 15px;
+            }
+
+            .page-title, .form-title {
+                font-size: 24px;
+            }
+
+            /* Membuat Navbar lebih rapi di mobile */
+            .navbar .navbar-brand {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+                width: 100%;
+            }
+
+            .navbar .nav-link {
+                margin: 5px 0;
+            }
+
+            /* Tombol menjadi full-width agar mudah disentuh */
+            .btn-glow-pink, .btn-secondary {
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            
+            .form-container form a.btn-secondary {
+                margin-top: 5px;
+            }
+
+            /* === Transformasi Tabel Menjadi Kartu (Card) === */
+            .product-table thead {
+                /* Sembunyikan header tabel di mobile */
+                display: none;
+            }
+
+            .product-table tr {
+                /* Setiap baris menjadi sebuah kartu */
+                display: block;
+                background: #fff0f5;
+                border-radius: 15px;
+                padding: 15px;
+                margin-bottom: 15px;
+                box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+                border: 1px solid #ffe4ec;
+            }
+
+            .product-table td {
+                /* Setiap sel menjadi satu baris di dalam kartu */
+                display: block;
+                text-align: right; /* Data di kanan, label di kiri */
+                padding: 8px;
+                border-bottom: 1px dashed #ffe4ec;
+                position: relative;
+            }
+            
+            .product-table td:last-child {
+                border-bottom: none;
+            }
+
+            .product-table td::before {
+                /* Tambahkan label kolom di kiri menggunakan atribut data-label */
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                font-weight: bold;
+                color: #d63384;
+                text-align: left;
+            }
+
+            /* Penyesuaian khusus untuk beberapa kolom */
+            .product-table td:nth-of-type(1) {
+                display: none; /* Sembunyikan kolom "No" karena tidak terlalu penting di mobile */
+            }
+
+            .product-table .product-img {
+                /* Posisikan gambar di tengah kartu */
+                display: block;
+                margin: 0 auto 10px auto;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .product-table td[data-label="Gambar"]::before {
+                display: none; /* Sembunyikan label "Gambar" */
+            }
+            
+            .product-table td[data-label="Gambar"] {
+                text-align: center;
+            }
+
+            .product-table td[data-label="Aksi"] {
+                text-align: center; /* Aksi di tengah */
+                padding-top: 15px;
+            }
+            
+            .product-table td[data-label="Aksi"]::before {
+                display: none; /* Sembunyikan label "Aksi" */
+            }
+        }
+    </style> --}}
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -346,17 +458,17 @@
                 <tbody>
                     @foreach ($products as $i => $product)
                     <tr>
-                        <td>{{ $i + $products->firstItem() }}</td>
-                        <td>
+                        <td data-label="No">{{ $i + $products->firstItem() }}</td>
+                        <td data-label="Gambar">
                             @if($product->gambar)
                                 <img src="{{ asset('storage/'.$product->gambar) }}" class="product-img">
                             @endif
                         </td>
-                        <td>{{ $product->kategori }}</td>
-                        <td class="fw-semibold text-pink">{{ $product->nama_produk }}</td>
-                        <td class="text-success fw-bold">Rp{{ number_format($product->harga_jual,0,',','.') }}</td>
-                        <td>{{ $product->created_at->format('d-m-Y H:i') }}</td>
-                        <td>
+                        <td data-label="Kategori">{{ $product->kategori }}</td>
+                        <td data-label="Nama Produk" class="fw-semibold text-pink">{{ $product->nama_produk }}</td>
+                        <td data-label="Harga Jual" class="text-success fw-bold">Rp{{ number_format($product->harga_jual,0,',','.') }}</td>
+                        <td data-label="Tanggal">{{ $product->created_at->format('d-m-Y H:i') }}</td>
+                        <td data-label="Aksi">
                             <a href="{{ route('products.edit', $product->id) }}" class="btn-icon btn-edit me-1" title="Edit">
                                 <i class="fas fa-pen"></i>
                             </a>

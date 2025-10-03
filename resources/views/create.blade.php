@@ -292,6 +292,116 @@
             color: white;
             box-shadow: 0 0 12px rgba(255, 105, 180, 0.8);
         }
+
+        /* === Responsive CSS (Untuk Tampilan Mobile) === */
+        @media (max-width: 768px) {
+
+            /* Perbaikan umum untuk mobile */
+            .container, .form-container {
+                padding: 15px;
+                margin-top: 15px;
+            }
+
+            .page-title, .form-title {
+                font-size: 24px;
+            }
+
+            /* Membuat Navbar lebih rapi di mobile */
+            .navbar .navbar-brand {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+                width: 100%;
+            }
+
+            .navbar .nav-link {
+                margin: 5px 0;
+            }
+
+            /* Tombol menjadi full-width agar mudah disentuh */
+            .btn-glow-pink, .btn-secondary {
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            
+            .form-container form a.btn-secondary {
+                margin-top: 5px;
+            }
+
+            /* === Transformasi Tabel Menjadi Kartu (Card) === */
+            .product-table thead {
+                /* Sembunyikan header tabel di mobile */
+                display: none;
+            }
+
+            .product-table tr {
+                /* Setiap baris menjadi sebuah kartu */
+                display: block;
+                background: #fff0f5;
+                border-radius: 15px;
+                padding: 15px;
+                margin-bottom: 15px;
+                box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+                border: 1px solid #ffe4ec;
+            }
+
+            .product-table td {
+                /* Setiap sel menjadi satu baris di dalam kartu */
+                display: block;
+                text-align: right; /* Data di kanan, label di kiri */
+                padding: 8px;
+                border-bottom: 1px dashed #ffe4ec;
+                position: relative;
+            }
+            
+            .product-table td:last-child {
+                border-bottom: none;
+            }
+
+            .product-table td::before {
+                /* Tambahkan label kolom di kiri menggunakan atribut data-label */
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                font-weight: bold;
+                color: #d63384;
+                text-align: left;
+            }
+
+            /* Penyesuaian khusus untuk beberapa kolom */
+            .product-table td:nth-of-type(1) {
+                display: none; /* Sembunyikan kolom "No" karena tidak terlalu penting di mobile */
+            }
+
+            .product-table .product-img {
+                /* Posisikan gambar di tengah kartu */
+                display: block;
+                margin: 0 auto 10px auto;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .product-table td[data-label="Gambar"]::before {
+                display: none; /* Sembunyikan label "Gambar" */
+            }
+            
+            .product-table td[data-label="Gambar"] {
+                text-align: center;
+            }
+
+            .product-table td[data-label="Aksi"] {
+                text-align: center; /* Aksi di tengah */
+                padding-top: 15px;
+            }
+            
+            .product-table td[data-label="Aksi"]::before {
+                display: none; /* Sembunyikan label "Aksi" */
+            }
+        }
     </style>
 </head>
 <body>
