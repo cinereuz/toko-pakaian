@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    {{-- <style>
+    <style>
         /* === Font & Icon === */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap');
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
@@ -406,7 +406,7 @@
                 display: none; /* Sembunyikan label "Aksi" */
             }
         }
-    </style> --}}
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
